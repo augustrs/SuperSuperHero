@@ -70,11 +70,13 @@ public class Superhero {
                         ", are they human: " + isHuman;
         }
 
-        public String isHuman() {
+        /*public String isHuman() {
                 if (isHuman == true) {
                         return "Menneskelig";
                 } else {
                         return "Ikke menneskelig/alien";
                 }
         }
+
+         */
 }

@@ -1,5 +1,7 @@
 package userinterface;
+
 import data.Database;
+
 import java.util.Scanner;
 
 
@@ -26,7 +28,7 @@ public class Userinterface {
         String[] commands = input.split("\\s+");
         String command = commands[0];
 
-        switch(command) {
+        switch (command) {
             case "1", "et" -> {
                 System.out.println("Input your superheros hero name: ");
                 String heroName = scanner.nextLine();
@@ -50,11 +52,22 @@ public class Userinterface {
                     scanner.nextLine();
                 }
                 int birthYear = scanner.nextInt();
+                char human;
+                boolean isHuman = true;
+                do {
+                    System.out.println("Is the superhero a human? [y/n]");
+                    human = scanner.next().charAt(0);
+                    if (human == 'j') {
+                        isHuman = true;
+                    } else if (human == 'n') {
+                        isHuman = false;
+                    } else {
+                        System.out.println("Invalid input");
+                    }
+                } while (human != 'j' && human != 'n');
 
-                System.out.println("Er superhelten menneske? [Yes/no]");
-                String isHuman = scanner.nextLine();
 
-                database.addSuperhero(heroName,realName,superPower,strength,birthYear,isHuman);
+                database.addSuperhero(heroName, realName, superPower, strength, birthYear, isHuman);
             }
         }
     }
