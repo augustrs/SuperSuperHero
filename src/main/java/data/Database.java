@@ -6,7 +6,12 @@ public class Database {
 
     private ArrayList<Superhero> superheroArrayList = new ArrayList<>();
 
-    public void addSuperhero(String heroName, String realName, String superPower, int strength, int birthYear, boolean isHuman) {
+    public ArrayList<Superhero> getSuperheroArrayList() {
+        return superheroArrayList;
+    }
+
+
+    public void addSuperhero(String heroName, String realName, String superPower, int strength, int birthYear, String isHuman) {
         superheroArrayList.add(new Superhero(heroName, realName, superPower, strength, birthYear, isHuman));
     }
 
@@ -25,69 +30,48 @@ public class Database {
     }
 
     public ArrayList<Superhero> search(String superHeroName) {
+        ArrayList<Superhero> heroNames = new ArrayList<>();
+        boolean herofound = false;
         for (Superhero superhero : superheroArrayList) {
             if (superhero.getHeroName().toLowerCase().trim().contains(superHeroName.toLowerCase())) {
                 ArrayList<Superhero> searchResults = new ArrayList<>();
                 searchResults.add(superhero);
+                herofound = true;
                 return searchResults;
             }
         }
         return null;
     }
-/*
-    public ArrayList<Superhelt> findHeroName(String heroName) {
-        ArrayList<Superhelt> heroNames = new ArrayList<>();
+
+
+
+
+    public ArrayList<Superhero> findHeroName(String heroName) {
+        ArrayList<Superhero> heroNames = new ArrayList<>();
         boolean heroFound = false;
-        for (Superhelt superhelt : superHelteListe) {
-            if (superhelt.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
-                heroNames.add(superhelt);
+        for (Superhero superhero : superheroArrayList) {
+            if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
+                heroNames.add(superhero);
                 heroFound = true;
             }
         }
         if (!heroFound) {
+            //skal over i UI
             System.out.println("Der findes ingen helte i listen med navn: " + "\"" + heroName + "\"");
         }
 
-
         return heroNames;
-    }*/
-
-
-    public void editSuperhero() {
-        Database superheroArrayList = new Database();
 
 
 
-    }
-
-    public Superhero selectASuperhero(int selectedSuperheroNumber) {
-        ArrayList<Superhero> superheroesToBeSelected = new ArrayList<>();
-        return superheroesToBeSelected.get(selectedSuperheroNumber - 1);
-    }
-
-    public ArrayList<Superhero> deleteSuperhero(String superHeroName) {
-        ArrayList<Superhero> result = search(superHeroName);
-
-        if (!result.isEmpty()) {
-            Superhero superhero = result.get(0);
-            superheroArrayList.remove(superhero);
-            return superheroArrayList;
         }
-        if (result.size() > 1) {
-            //selectASuperhero()
-            return superheroArrayList;
-        }
-        return result;
 
-    }
-/*
-    public void sletSuperhelt (Superhero superhero){
+
+    public void sletSuperhero(Superhero superhero) {
         if (superheroArrayList.contains(superhero)) {
             superheroArrayList.remove(superhero);
-
-        } else {
-            System.out.println(superhero.getHeroName() + " blev ikke fundet i databasen.");
         }
-    }*/
-
+    }
 }
+
+

@@ -4,11 +4,11 @@ public class Superhero {
         private String heroName;
         private String realName;
         private String superPower;
-        private int strength;
+        private double strength;
         private int birthYear;
-        private boolean isHuman;
+        private String isHuman;
 
-        public Superhero(String heroName, String realName, String superPower, int strength, int birthYear, boolean isHuman) {
+        public Superhero(String heroName, String realName, String superPower, double strength, int birthYear, String isHuman) {
                 this.heroName = heroName;
                 this.realName = realName;
                 this.superPower = superPower;
@@ -27,13 +27,13 @@ public class Superhero {
         public String getSuperPower() {
                 return superPower;
         }
-        public int getStrength() {
+        public double getStrength() {
                 return strength;
         }
         public int getBirthYear(){
                 return birthYear;
         }
-        public boolean getIsHuman(){
+        public String getIsHuman(){
                 return isHuman;
         }
 
@@ -49,7 +49,7 @@ public class Superhero {
                 this.superPower = superPower;
         }
 
-        public void setStrength(int strength) {
+        public void setStrength(double strength) {
                 this.strength = strength;
         }
 
@@ -57,7 +57,7 @@ public class Superhero {
                 this.birthYear = birthYear;
         }
 
-        public void setIsHuman(boolean isHuman) {
+        public void setIsHuman(String isHuman) {
                 this.isHuman = isHuman;
         }
 
@@ -70,13 +70,6 @@ public class Superhero {
                         ", are they human: " + isHuman;
         }
 
-        /*public String isHuman() {
-                if (isHuman == true) {
-                        return "Menneskelig";
-                } else {
-                        return "Ikke menneskelig/alien";
-                }
-        }
 
-         */
+
 }
