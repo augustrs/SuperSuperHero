@@ -22,8 +22,7 @@ public class Userinterface {
         System.out.println("Indtast 4 for at redigere en superhelt");
         System.out.println("Indtast 5 for at slette en superhelt");
         System.out.println("Indtast 9 for at afslutte");
-
-
+        System.out.println("\u2500".repeat(50) + " ");
     }
 
     public void StartProgram() {
@@ -31,8 +30,8 @@ public class Userinterface {
 
 
         while (run) {
-
             welcomeMessage();
+
             String input = scanner.nextLine().trim().toLowerCase();
             String[] commands = input.split("\\s+");
             String command = commands[0];
@@ -86,16 +85,12 @@ public class Userinterface {
                 case "2", "to" -> {
                     System.out.println(database.printAllSuperheroes());
 
-
                 }
 
                 case "3", "tre" -> {
                     System.out.println("Søg efter en superhelt.");
                     String brugerSøgning = scanner.nextLine();
                     System.out.println(database.findHeroName(brugerSøgning));
-
-
-
 
                 }
 
@@ -113,7 +108,6 @@ public class Userinterface {
                 }
 
             }
-
         }
 
     }
@@ -190,7 +184,6 @@ public class Userinterface {
 
         }
 
-
     }
 
     //slettefunktion
@@ -198,6 +191,7 @@ public class Userinterface {
         System.out.println("Søg på helten du vil slette");
         String superheltnavn = scanner.nextLine();
         ArrayList<Superhero> resultater = database.search(superheltnavn);
+
 
         if (resultater.isEmpty()) {
             System.out.println("Ingen matchende superhelte fundet.");

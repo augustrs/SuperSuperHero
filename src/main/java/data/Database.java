@@ -25,7 +25,9 @@ public class Database {
             stringBuilder.append("\u2500".repeat(50)).append("\n");
             stringBuilder.append(superhero).append("\n");
 
+
         }
+
         return stringBuilder.toString();
     }
 
@@ -43,9 +45,6 @@ public class Database {
         return null;
     }
 
-
-
-
     public ArrayList<Superhero> findHeroName(String heroName) {
         ArrayList<Superhero> heroNames = new ArrayList<>();
         boolean heroFound = false;
@@ -56,7 +55,7 @@ public class Database {
             }
         }
         if (!heroFound) {
-            //skal over i UI
+
             System.out.println("Der findes ingen helte i listen med navn: " + "\"" + heroName + "\"");
         }
 
@@ -64,7 +63,7 @@ public class Database {
 
 
 
-        }
+    }
 
 
     public void sletSuperhero(Superhero superhero) {

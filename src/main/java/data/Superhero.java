@@ -63,11 +63,11 @@ public class Superhero {
 
         public String toString() {
                 return "Your superhero's hero name: " + heroName +
-                        ", your superhero's real name: " + realName +
-                        ", their super power: " + superPower +
-                        ", their power level: " + strength +
-                        ", year they were born: " + birthYear +
-                        ", are they human: " + isHuman;
+                        "\n" + "your superhero's real name: " + realName +
+                        "\n" + "their super power: " + superPower +
+                        "\n" + "their power level: " + strength +
+                        "\n" + "year they were born: " + birthYear +
+                        "\n" + "are they human: " + isHuman;
         }
 
 
