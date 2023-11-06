@@ -124,7 +124,7 @@ public class Userinterface {
         Superhero superheltDerSkalRedigeres = null;
 
         if (søgeResultat.size() == 0) {
-            System.out.println("Der findes ikke nogen helte");
+            System.out.println("Der findes ingen helte i listen med navn: " + "\"" + brugerInput + "\"");
 
         } else if (søgeResultat.size() >= 1) {
 

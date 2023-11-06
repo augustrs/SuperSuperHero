@@ -48,16 +48,11 @@ public class Database {
 
     public ArrayList<Superhero> findHeroName(String heroName) {
         ArrayList<Superhero> heroNames = new ArrayList<>();
-        boolean heroFound = false;
         for (Superhero superhero : superheroArrayList) {
             if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
                 heroNames.add(superhero);
-                heroFound = true;
-            }
-        }
-        if (!heroFound) {
 
-            System.out.println("Der findes ingen helte i listen med navn: " + "\"" + heroName + "\"");
+            }
         }
 
         return heroNames;
@@ -73,7 +68,7 @@ public class Database {
         }
     }
     public void saveSuperheroes() {
-        Scanner scanner
+        Scanner scanner;
     }
 }
 
