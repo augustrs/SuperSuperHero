@@ -1,0 +1,90 @@
+Index: src/main/java/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import data.Superhero;\r\nimport userinterface.Userinterface;\r\n\r\npublic class Main {\r\n    public static void main(String[] args) {\r\n        Userinterface userinterface = new Userinterface();\r\n        userinterface.StartProgram();\r\n        Superhero superhero = new Superhero(\"Superman\", \"Ikke superman\", \"Java\", 5000, 1010, \"j\");\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Main.java b/src/main/java/Main.java
+--- a/src/main/java/Main.java	(revision 88841b6f56085216eb60794f5748af98fe157ef9)
++++ b/src/main/java/Main.java	(date 1699270567897)
+@@ -5,7 +5,7 @@
+     public static void main(String[] args) {
+         Userinterface userinterface = new Userinterface();
+         userinterface.StartProgram();
+-        Superhero superhero = new Superhero("Superman", "Ikke superman", "Java", 5000, 1010, "j");
++
+ 
+ 
+     }
+Index: src/main/java/data/Database.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package data;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class Database {\r\n\r\n    private ArrayList<Superhero> superheroArrayList = new ArrayList<>();\r\n\r\n    public ArrayList<Superhero> getSuperheroArrayList() {\r\n        return superheroArrayList;\r\n    }\r\n\r\n\r\n    public void addSuperhero(String heroName, String realName, String superPower, int strength, int birthYear, String isHuman) {\r\n        superheroArrayList.add(new Superhero(heroName, realName, superPower, strength, birthYear, isHuman));\r\n    }\r\n\r\n    public int printSuperheroArrayListSize() {\r\n        return superheroArrayList.size();\r\n    }\r\n\r\n    public String printAllSuperheroes() {\r\n        StringBuilder stringBuilder = new StringBuilder();\r\n        for (Superhero superhero : superheroArrayList) {\r\n            stringBuilder.append(\"\\u2500\".repeat(50)).append(\"\\n\");\r\n            stringBuilder.append(superhero).append(\"\\n\");\r\n\r\n\r\n        }\r\n\r\n        return stringBuilder.toString();\r\n    }\r\n\r\n    public ArrayList<Superhero> search(String superHeroName) {\r\n        ArrayList<Superhero> heroNames = new ArrayList<>();\r\n        boolean herofound = false;\r\n        for (Superhero superhero : superheroArrayList) {\r\n            if (superhero.getHeroName().toLowerCase().trim().contains(superHeroName.toLowerCase())) {\r\n                ArrayList<Superhero> searchResults = new ArrayList<>();\r\n                searchResults.add(superhero);\r\n                herofound = true;\r\n                return searchResults;\r\n            }\r\n        }\r\n        return null;\r\n    }\r\n\r\n    public ArrayList<Superhero> findHeroName(String heroName) {\r\n        ArrayList<Superhero> heroNames = new ArrayList<>();\r\n        boolean heroFound = false;\r\n        for (Superhero superhero : superheroArrayList) {\r\n            if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {\r\n                heroNames.add(superhero);\r\n                heroFound = true;\r\n            }\r\n        }\r\n        if (!heroFound) {\r\n\r\n            System.out.println(\"Der findes ingen helte i listen med navn: \" + \"\\\"\" + heroName + \"\\\"\");\r\n        }\r\n\r\n        return heroNames;\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n    public void sletSuperhero(Superhero superhero) {\r\n        if (superheroArrayList.contains(superhero)) {\r\n            superheroArrayList.remove(superhero);\r\n        }\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/data/Database.java b/src/main/java/data/Database.java
+--- a/src/main/java/data/Database.java	(revision 88841b6f56085216eb60794f5748af98fe157ef9)
++++ b/src/main/java/data/Database.java	(date 1699273414974)
+@@ -47,17 +47,13 @@
+ 
+     public ArrayList<Superhero> findHeroName(String heroName) {
+         ArrayList<Superhero> heroNames = new ArrayList<>();
+-        boolean heroFound = false;
+         for (Superhero superhero : superheroArrayList) {
+             if (superhero.getHeroName().toLowerCase().contains(heroName.toLowerCase())) {
+                 heroNames.add(superhero);
+-                heroFound = true;
++
+             }
+         }
+-        if (!heroFound) {
+ 
+-            System.out.println("Der findes ingen helte i listen med navn: " + "\"" + heroName + "\"");
+-        }
+ 
+         return heroNames;
+ 
+Index: src/main/java/userinterface/Userinterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package userinterface;\r\n\r\nimport data.Database;\r\nimport data.Superhero;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Scanner;\r\n\r\n\r\npublic class Userinterface {\r\n    Scanner scanner = new Scanner(System.in);\r\n    Database database = new Database();\r\n\r\n\r\n    public void welcomeMessage() {\r\n        System.out.println(\"Velkommen til SUPERHERO UNIVERSET\");\r\n        System.out.println(\"\\u2500\".repeat(50) + \" \");\r\n\r\n        System.out.println(\"Indtast 1 for at oprette en ny superhelt\");\r\n        System.out.println(\"Indtast 2 for at se alle superhelte\");\r\n        System.out.println(\"Indtast 3 for at søge på en superhelt\");\r\n        System.out.println(\"Indtast 4 for at redigere en superhelt\");\r\n        System.out.println(\"Indtast 5 for at slette en superhelt\");\r\n        System.out.println(\"Indtast 9 for at afslutte\");\r\n        System.out.println(\"\\u2500\".repeat(50) + \" \");\r\n    }\r\n\r\n    public void StartProgram() {\r\n        boolean run = true;\r\n\r\n\r\n        while (run) {\r\n            welcomeMessage();\r\n\r\n            String input = scanner.nextLine().trim().toLowerCase();\r\n            String[] commands = input.split(\"\\\\s+\");\r\n            String command = commands[0];\r\n\r\n\r\n            switch (command) {\r\n                case \"1\", \"et\" -> {\r\n                    System.out.println(\"Input your superheros hero name: \");\r\n                    String heroName = scanner.nextLine();\r\n\r\n                    System.out.println(\"Input your superheros real name: \");\r\n                    String realName = scanner.nextLine();\r\n\r\n                    System.out.println(\"Input your superheros superpower: \");\r\n                    String superPower = scanner.nextLine();\r\n\r\n                    System.out.println(\"Input your superheros power level: \");\r\n                    while (!scanner.hasNextInt()) {\r\n                        System.out.println(\"You need to input a number: \");\r\n                        scanner.nextLine();\r\n                    }\r\n                    int strength = scanner.nextInt();\r\n\r\n                    System.out.println(\"Input your superheros birthyear: \");\r\n                    while (!scanner.hasNextInt()) {\r\n                        System.out.println(\"You need to input a number: \");\r\n                        scanner.nextLine();\r\n                    }\r\n                    int birthYear = scanner.nextInt();\r\n                    char human;\r\n                    boolean isHuman = true;\r\n                    do {\r\n                        System.out.println(\"Is the superhero a human? [j/n]\");\r\n                        human = scanner.next().charAt(0);\r\n                        if (human == 'j') {\r\n                            isHuman = true;\r\n                        } else if (human == 'n') {\r\n                            isHuman = false;\r\n\r\n                        } else {\r\n                            System.out.println(\"Invalid input\");\r\n                        }\r\n                    } while (human != 'j' && human != 'n');\r\n\r\n\r\n                    database.addSuperhero(heroName, realName, superPower, strength, birthYear, String.valueOf(isHuman));\r\n                    System.out.println(\"Superhelt tilføjet til Database\");\r\n\r\n\r\n                }\r\n                case \"2\", \"to\" -> {\r\n                    System.out.println(database.printAllSuperheroes());\r\n\r\n                }\r\n\r\n                case \"3\", \"tre\" -> {\r\n                    System.out.println(\"Søg efter en superhelt.\");\r\n                    String brugerSøgning = scanner.nextLine();\r\n                    System.out.println(database.findHeroName(brugerSøgning));\r\n\r\n                }\r\n\r\n                case \"4\", \"fire\" -> {\r\n                    redigerPerson();\r\n\r\n                }\r\n\r\n                case \"5\", \"fem\" -> {\r\n                    sletSuperHero();\r\n                }\r\n\r\n                case \"9\", \"ni\" -> {\r\n                    System.exit(0);\r\n                }\r\n\r\n            }\r\n        }\r\n\r\n    }\r\n    public void redigerPerson() {\r\n        //Her kan delvist navn indtastes\r\n        System.out.println(\"Indtast søgekriterium for person\");\r\n        String brugerInput = scanner.nextLine();\r\n\r\n        ArrayList<Superhero> søgeResultat = database.findHeroName(brugerInput);\r\n\r\n        Superhero superheltDerSkalRedigeres = null;\r\n\r\n        if (søgeResultat.size() == 0) {\r\n            System.out.println(\"Der findes ikke nogen helte\");\r\n\r\n        } else if (søgeResultat.size() >= 1) {\r\n\r\n\r\n            // Vælg en person i søgeresultat med flere personer\r\n            System.out.println(\"Vælg person\");\r\n            int tæller = 1;\r\n            for (Superhero superhero : søgeResultat) {\r\n                System.out.println(tæller++ + \". \" +\r\n                        superhero.getHeroName() + \" \" +\r\n                        superhero.getRealName() + \" \" +\r\n                        superhero.getSuperPower() + \" \" +\r\n                        superhero.getBirthYear() + \" \" +\r\n                        superhero.getIsHuman() + \" \" +\r\n                        superhero.getStrength()\r\n                );\r\n                int superheltValg = scanner.nextInt();\r\n                scanner.nextLine();\r\n                superheltDerSkalRedigeres = søgeResultat.get(superheltValg - 1);\r\n            }\r\n        } else {\r\n            superheltDerSkalRedigeres = søgeResultat.get(0);\r\n        }\r\n\r\n        if (superheltDerSkalRedigeres != null) {\r\n            System.out.println(\"Rediger personinformation. Tryk ENTER hvis information ikke skal redigeres.\");\r\n            String nyVærdi;\r\n            System.out.println(\"Helte navn: \" + superheltDerSkalRedigeres.getHeroName());\r\n            nyVærdi = scanner.nextLine();\r\n            if (!nyVærdi.isEmpty()) {\r\n                superheltDerSkalRedigeres.setHeroName(nyVærdi);\r\n            }\r\n            System.out.println(\"Rigtige navn: \" + superheltDerSkalRedigeres.getRealName());\r\n            nyVærdi = scanner.nextLine();\r\n            if (!nyVærdi.isEmpty()) {\r\n                superheltDerSkalRedigeres.setRealName(nyVærdi);\r\n            }\r\n            System.out.println(\"Lavet år:: \" + superheltDerSkalRedigeres.getBirthYear());\r\n            nyVærdi = scanner.nextLine();\r\n            if (!nyVærdi.isEmpty()) {\r\n                superheltDerSkalRedigeres.setBirthYear(Integer.parseInt(nyVærdi));\r\n            }\r\n            System.out.println(\"Superkraft: \" + superheltDerSkalRedigeres.getSuperPower());\r\n            nyVærdi = scanner.nextLine();\r\n            if (!nyVærdi.isEmpty()) {\r\n                superheltDerSkalRedigeres.setSuperPower(nyVærdi);\r\n            }\r\n            System.out.println(\"IsHuman: \" + superheltDerSkalRedigeres.getIsHuman());\r\n            nyVærdi = scanner.nextLine();\r\n            if (!nyVærdi.isEmpty()) {\r\n                superheltDerSkalRedigeres.setIsHuman(nyVærdi);\r\n            }\r\n            System.out.println(\"Strenght: \" + superheltDerSkalRedigeres.getStrength());\r\n            nyVærdi = scanner.nextLine();\r\n            if (!nyVærdi.isEmpty()) {\r\n                superheltDerSkalRedigeres.setStrength(Double.parseDouble(nyVærdi));\r\n            }\r\n\r\n            System.out.println(superheltDerSkalRedigeres + \" er opdateret.\");\r\n\r\n        }\r\n\r\n    }\r\n\r\n    //slettefunktion\r\n    public void sletSuperHero() {\r\n        System.out.println(\"Søg på helten du vil slette\");\r\n        String superheltnavn = scanner.nextLine();\r\n        ArrayList<Superhero> resultater = database.search(superheltnavn);\r\n\r\n\r\n        if (resultater.isEmpty()) {\r\n            System.out.println(\"Ingen matchende superhelte fundet.\");\r\n            System.out.println(\"\\u2500\".repeat(50));\r\n\r\n        } else if (resultater.size() == 1) {\r\n            Superhero superhero = resultater.get(0);\r\n            database.sletSuperhero(superhero);\r\n            System.out.println(superhero.getHeroName() + \" er blevet slettet fra databasen.\");\r\n            System.out.println(\"\\u2500\".repeat(50));\r\n        } else {\r\n            System.out.println(\"Flere matchende superhelte fundet. Vælg en ved at indtaste nummeret:\");\r\n            for (int i = 0; i < resultater.size(); i++) {\r\n                Superhero superhelt = resultater.get(i);\r\n                System.out.println((i + 1) + \". \" + superhelt.getHeroName());\r\n            }\r\n\r\n            int valg = Integer.parseInt(scanner.nextLine());\r\n\r\n            if (valg >= 1 && valg <= resultater.size()) {\r\n                Superhero superhero = resultater.get(valg - 1);\r\n                database.sletSuperhero(superhero);\r\n                System.out.println(superhero.getHeroName() + \" er blevet slettet fra databasen.\");\r\n                System.out.println(\"\\u2500\".repeat(50));\r\n            } else {\r\n                System.out.println(\"Ugyldigt valg.\");\r\n            }\r\n        }\r\n\r\n\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/userinterface/Userinterface.java b/src/main/java/userinterface/Userinterface.java
+--- a/src/main/java/userinterface/Userinterface.java	(revision 88841b6f56085216eb60794f5748af98fe157ef9)
++++ b/src/main/java/userinterface/Userinterface.java	(date 1699273414983)
+@@ -32,11 +32,13 @@
+         while (run) {
+             welcomeMessage();
+ 
++
+             String input = scanner.nextLine().trim().toLowerCase();
+             String[] commands = input.split("\\s+");
+             String command = commands[0];
+ 
+ 
++
+             switch (command) {
+                 case "1", "et" -> {
+                     System.out.println("Input your superheros hero name: ");
+@@ -85,6 +87,7 @@
+                 case "2", "to" -> {
+                     System.out.println(database.printAllSuperheroes());
+ 
++
+                 }
+ 
+                 case "3", "tre" -> {
+@@ -121,7 +124,8 @@
+         Superhero superheltDerSkalRedigeres = null;
+ 
+         if (søgeResultat.size() == 0) {
+-            System.out.println("Der findes ikke nogen helte");
++
++            System.out.println("Der findes ingen helte i listen med navn: " + "\"" + brugerInput + "\"");
+ 
+         } else if (søgeResultat.size() >= 1) {
+ 
