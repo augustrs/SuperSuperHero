@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Database {
 
@@ -70,6 +71,9 @@ public class Database {
         if (superheroArrayList.contains(superhero)) {
             superheroArrayList.remove(superhero);
         }
+    }
+    public void saveSuperheroes() {
+        Scanner scanner
     }
 }
 

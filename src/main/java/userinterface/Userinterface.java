@@ -54,6 +54,7 @@ public class Userinterface {
                         scanner.nextLine();
                     }
                     int strength = scanner.nextInt();
+                    scanner.nextLine();
 
                     System.out.println("Input your superheros birthyear: ");
                     while (!scanner.hasNextInt()) {
@@ -79,6 +80,7 @@ public class Userinterface {
 
                     database.addSuperhero(heroName, realName, superPower, strength, birthYear, String.valueOf(isHuman));
                     System.out.println("Superhelt tilføjet til Database");
+                    scanner.nextLine();
 
 
                 }
@@ -104,6 +106,7 @@ public class Userinterface {
                 }
 
                 case "9", "ni" -> {
+
                     System.exit(0);
                 }
 
